@@ -1,0 +1,1588 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+    <meta name="theme-color" content="#00b4d8">
+ 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mofor Didacus</title>
+  <style>
+    /* Style the body */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      max-width:800px;
+      
+    }
+
+    /* Full-screen pages */
+    .page {
+      display: none;
+      height: 100vh;
+      width: 100%;
+      padding: 20px;
+      background-color: #f9f9f9;
+      box-sizing: border-box;
+    }
+
+    /* Drawer styles */
+    .drawer {
+      height: 100%;
+      width: 250px;
+      position: fixed;
+      top: 0;
+      left: -250px; /* Initially hidden */
+      background-color:#f1f1f1;
+      color: #000;
+      transition: 0.3s;
+      padding-top: 60px;
+      z-index: 100;
+    }
+
+    /* Links inside the drawer */
+    .drawer a {
+      padding: 15px 25px;
+      text-decoration: none;
+      font-size: 20px;
+      font-weight: bold;
+       color: #000;
+    
+      display: block;
+      transition: 0.3s;
+    }
+
+    .drawer a:hover {
+      background-color: #575757;
+    }
+
+    /* Close button styles */
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 30px;
+      color:red;
+      font-weight:bold;
+      cursor: pointer;
+    }
+
+    /* Style the open/close button */
+    .open-btn {
+      font-size: 30px;
+      cursor: pointer;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      color:#fff;
+           
+      z-index: 200;
+      transition: 0.3s;
+    }
+  .menu{
+    background-color:red;
+    color:white;
+    
+  }
+
+    /* Hide the open button when drawer is open */
+    body.drawer-open .open-btn {
+      display: none;
+    }
+
+    /* Style for when the drawer is open */
+    body.drawer-open .drawer {
+      left: 0; /* Show the drawer when body has the class 'drawer-open' */
+    }
+
+    body.drawer-open .open-btn {
+      left: 270px; /* Move the button out of the way */
+    }
+
+    body.drawer-open .page {
+      overflow: hidden; /* Prevent scrolling on the page when drawer is open */
+    }
+
+    /* Page content styling */
+    .page-content {
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 8px;
+    }
+  #header{
+    display:flex;
+    gap:1px;
+    background:#000;
+    height:70px;
+    width:100%;
+    z-index:"1000"
+  }
+  #logo{
+    width:65px;
+    height:65px;
+  }
+  h1{
+    
+    background:linear-gradient(to right,#00b4d8,#fff);
+            border-radius: 8px;
+            -webkit-background-clip:text;
+            -webkit-text-fill-color:transparent;
+       margin-top:10px;
+    font-weight:bold;
+   
+  }
+  #login{
+    background:linear-gradient(to right, #00b4d8 10%,#fff);
+    color:red;
+    border-radius:5px;
+    border:none;
+    width:60px;
+    height:45px;
+    margin-left:100px;
+    margin-top:12px;
+    font-size:16px;
+    
+  }
+  #a{
+    color:#000;
+    font-weight:bold;
+  }
+  
+      .container {
+      position: relative;
+        align-items:center;
+    }
+
+    #highlight {
+      position: relative;
+      margin:5vh;
+      padding: 15px 30px;
+      font-size: 18px;
+      background-color:transparent;
+      border:2px solid #00b4d8;
+      box-shadow:0px 0px 15px #00b4dy8;
+      border-radius: 10px;
+      cursor: pointer;
+      outline: none;
+      
+    }
+      #highlight:hover{
+        box-shadow:0px 0px 10px #00b4d8;
+      }
+  body.dark-mode #highlight {
+    color: #fff;
+      background-color:#333;
+  }
+#highlight a{
+  color:#000;
+  font-weight:bold;
+}
+  #highlight::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 110%;
+      height: 110%;
+      box-shadow:0px 0px 10px #00b4d8;
+      border: 2px solid #00b4d8 ;
+      border-radius: 10px;
+      animation: pulse 2s infinite;
+    }
+  
+   body.dark-mode #highlight::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 110%;
+      height: 110%;
+      box-shadow:0px 0px 25px #00b4d8;
+      border: 2px solid #00b4d8 ;
+      border-radius: 10px;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translate(-50%, -50%) scale(1.5);
+        opacity: 0;
+      }
+    }
+
+    
+#welcome{
+  width:100%;
+  height:300px;
+  align-items:center;
+  justify-items:center;
+  judtify-content:center;
+  border-radius:13px;
+  
+}
+  #why-choose-me{
+  width:100%;
+  height:300px;
+  align-items:center;
+  justify-items:center;
+  judtify-content:center;
+  border-radius:13px;
+  
+  
+}
+  #icons{
+    border-radius:50%;
+    width:50px;
+  height:50px;
+    gap:19px;
+ 
+  }
+  #connect{
+    display:flex;
+    gap:20px;
+    margin:;
+   
+    justify-content:center;
+    
+ 
+  }
+          /* Dark Mode Styles */
+        body.dark-mode {
+            background-color: #121212;
+            color: #ddd;
+        }
+ 
+
+        /* Hide the default checkbox */
+        .custom-checkbox {
+            display: none;
+        }
+
+        /* Label styling */
+        .custom-checkbox-label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            position: relative;
+            font-size: 18px;
+            user-select: none;
+            padding-left: 35px; /* Adds space for the custom checkbox */
+        }
+
+        /* Custom checkbox slider */
+        .custom-checkbox-label::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 30px;
+            height: 18px;
+            border-radius: 25px;
+            background-color: #ccc;
+            transition: all 0.3s ease;
+        }
+
+        /* Custom checkbox when checked */
+        .custom-checkbox:checked + .custom-checkbox-label::before {
+            background-color: #4CAF50; /* Green when checked */
+        }
+
+        /* Custom checkbox circle */
+        .custom-checkbox-label::after {
+            content: "";
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background-color: white;
+            transition: all 0.3s ease;
+        }
+
+        /* Move the circle to the right when checked */
+        .custom-checkbox:checked + .custom-checkbox-label::after {
+            left: 14px;
+        }
+
+        /* Add label text space */
+        .custom-checkbox-label {
+            padding-left: 40px; /* Adjust label space for the toggle */
+        }
+
+        /* Dark Mode toggle label text color */
+        body.dark-mode .custom-checkbox-label {
+            color: #ddd; /* Change label text color in dark mode */
+        }
+  ul{
+    
+    width: 90%;
+    height: 300px;
+    border-radius:15px;
+    justify-content:center;
+    
+  }li{
+    margin-top:10px;
+  }
+ footer{
+   width:100%;
+   height:150px;
+   background-color:#d3d3d3;
+   color:#111;
+   text-align:center;
+   position:top;
+   bottom:0px;
+   
+ }
+  body.dark-mode .section{
+   background-color:;
+  }
+  footer-elements{
+    text-align:center;
+    font-size:22px;
+    margin:500px;
+    color:#000;
+  }
+  body.dark-mode #footer-elements{
+    color:#fff;
+  }
+  
+  #link{
+    color:#00b4d8;
+    text-decoration:none;
+    font-weight:bold;
+  }
+  .text-container {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.animated-text {
+  opacity: 0;
+  color:#00b4d8;
+  animation: fadeInOut 6s ease-in-out infinite;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+
+@keyframes fadeInOut {
+  0%, 100% {
+    opacity: 0;
+  }
+  20%, 80% {
+    opacity: 1;
+  }
+}
+  
+  .fade-in {
+  opacity: 1;
+  animation: fadeIn 2s ease-in-out forwards;
+}
+
+.fade-out {
+  opacity: 0;
+  animation: fadeOut 2s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+}
+  a{
+    color:white;
+    text-decoration:none;
+  }
+  
+  #status-container {
+   padding-left:20px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  height: 200px;
+  background: #d3d3d3;
+  overflow-x: auto;
+}
+
+.status {
+  min-width: 100px;
+  width: 100px;
+  max-width: 150px;
+  height: 160px;
+  max-height: 200px;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+
+  
+  
+  
+  body.dark-mode #status-container{
+    background: #333; 
+  }
+
+
+.status:hover { 
+    transform: scale(1.05);
+}
+.status img, .status video { 
+    width: 100%; 
+    height: 100%;
+    object-fit: cover;
+}
+
+.fullscreen { 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    margin-top:0px;
+    width: 100%; 
+    height: 650px; 
+    background: rgba(0, 0, 0, 0.9); 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    flex-direction: column; 
+    z-index: 99; 
+    transition: opacity 0.5s; 
+}
+.hidden { display: none;
+}
+.content { 
+    width: 100%; 
+    height: 100%; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+}
+#media-container { 
+    width: 100%; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    perspective: 1000px;
+}
+#fullscreen-image, #fullscreen-video {
+    width: 100%; 
+    height: 100%; 
+    z-index:50;
+    transform: rotateY(0deg); 
+    transition: transform 0.6s;
+    
+}
+#fullscreen-video { 
+    display: none; 
+}
+#progress-bar {
+    position: absolute; 
+    top: 10px; 
+    left: 10px; 
+    width: 0%; 
+    height: 5px; 
+    background: white; 
+    transition: width 5s linear;
+}
+
+
+#caption {
+    position: absolute; 
+    bottom: 20px; 
+    background:linear-gradient(45deg,#fff,#00b4d8);
+    -webkit-text-fill-color:transparent;
+    -webkit-background-clip:text;
+    font-size: 18px;
+    font-weight:bold;
+}
+
+#prev, #next, #download, #share {
+    position: absolute; 
+    font-size: 30px; 
+    background: none; 
+    color: white; 
+    border: none; 
+    cursor: pointer;
+}
+#prev { 
+    left: 10px; 
+    top: 50%;
+}
+#next { 
+    right: 10px; 
+    top: 50%; 
+}
+#download { 
+    bottom: 20px; 
+    left: 20px; 
+}
+#close {
+    position: absolute; 
+    top: 10px; 
+    right: 20px; 
+    font-size: 30px; 
+    color:red;
+    
+    cursor: pointer; 
+}
+  
+  
+        .dashboard {
+            display:block;
+            flex-direction:colunm;
+            align-items: center;
+            gap: 20px;
+            overflow-y: auto;
+            max-height: 80vh;
+            width: 100%;
+         
+        
+          
+            
+        }
+
+        .row {
+            display:flex;
+            gap: 10px;
+        }
+
+        .card {
+            width: 150px;
+            height: 150px;
+            perspective: 1000px;
+            cursor: pointer;
+            margin-bottom: 20px;
+            margin-left:8%;
+            position: relative;
+        }
+
+        .card-inner {
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+            border-radius: 8px;
+        }
+
+        .card:hover .card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align:center;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+            
+        }
+
+        .card-front {
+            background:linear-gradient(45deg, #add8e6,#00b4d8);  /* Light blue */
+        }
+
+        .card-back {
+            background-color: gray;  /* Light red */
+            transform: rotateY(180deg);
+            color:#fff;
+        }
+
+        .click-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 16px;
+            color: #666;
+            opacity: 1;
+            transition: opacity 1s;
+        }
+
+        .fade-out {
+            opacity: 0;
+        }
+  
+  
+  /* Modal (pop-up) styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+            padding-top: 60px;
+            text-align:center;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            color:#000;
+            margin: 5% auto;
+            padding: 40px;
+            border-radius: 10px;
+            width: 70%;
+            max-width: 300px;
+          
+        }
+    #download-btn{
+       color:black;
+        border-radius:5px;
+        border:2px groove green;
+        padding:10px 15px;
+        margin-top:0px;
+        height:60px;
+       
+        
+    }
+
+        /* Progress Bar */
+        .hidden {
+            display: none;
+        }
+j
+        #progress-container {
+            margin-top: 20px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            background: #ddd;
+            height: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 5px;
+        }
+
+        #progress-fill {
+            height: 100%;
+            width: 0%;
+            background: #4CAF50;
+            transition: width 0.2s ease-in-out;
+        }
+
+        /* Close Button */
+        .close-modal {
+            color:red;
+            font-size: 28px;
+            font-weight: bold;
+            float: right;
+            cursor: pointer;
+        }
+
+        .close-modal:hover,
+        .close-modal:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* App Info */
+        .app-info {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        /* Mobile Responsiveness */
+        @media screen and (max-width: 480px) {
+            .modal-content {
+                width: 90%;
+                padding: 20px;
+            }
+
+            .open-modal-btn {
+                width: 100%;
+                text-align:left;
+                color:white;
+              font-weight:bold;
+              font-size: 20px;
+            }
+
+            .progress-bar {
+                height: 15px;
+            }
+        }
+    
+    .icon {
+            font-size: 100px;
+            color: white;
+        }
+    #open-modal-btn{
+        border:none;
+        background:transparent;
+      font-size: 20px;
+      margin-left:12px;
+    }
+  #cancel-download{
+    color:red;
+  }
+  /* Disable scrolling on the body when drawer is open */
+body.no-scroll {
+  overflow: hidden;
+}
+
+/* Enable vertical scrolling only for the drawer */
+.drawer {
+  overflow-y: auto;
+}
+  
+  /* Dark Mode Styles for Drawer */
+body.dark-mode .drawer {
+    background-color: #222; /* Dark background for the drawer */
+}
+
+body.dark-mode .drawer a {
+    color:#fff; /* Light text color inside the drawer */
+}
+
+body.dark-mode .drawer a:hover {
+    background-color: #004b8d; /* Darker hover effect for links */
+}
+
+
+/* Dark Mode Styles for About Page */
+body.dark-mode .about-container {
+    background-color: #1f1f1f;
+    color: #ddd;
+}
+
+
+  
+  .tech-slider {
+    text-align: center;
+    padding: 40px 20px;
+    background:transparent;
+    overflow: hidden;
+}
+   
+ }
+.tech-slider h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.slider-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.slider {
+    display: flex;
+    gap: 30px;
+    animation: slide 10s linear infinite;
+    width: calc(120px * 14); /* Adjust width based on number of icons */
+}
+
+/* Icon styling */
+.slider img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+  .slider img:hover {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+ 
+  }
+/* Hover effect */
+.slider img:hover {
+    transform: scale(2);
+}
+
+/* Keyframes for infinite scrolling */
+@keyframes slide {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+/* Pause animation on hover */
+.slider:hover {
+    animation-play-state: paused;
+}
+  
+  /* Skills List */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    background: #007bff1a;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 5px;
+}
+  
+  #why-choose-me ul li {
+    background:rgba(0,0,0,0.3);
+  }
+  body.dark-mode #why-choose-me ul li {
+    background:#333;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 5px;
+
+    
+  }
+  body.dark-mode #why-choose-me strong{
+    color:#11b4d8;
+  }
+  h3{
+    margin-left:20px;
+  }
+  /* Left & Right animations */
+        .left, .right {
+            opacity: 0;
+            transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+        }
+
+        .left {
+            transform: translateX(-100px);
+        }
+
+        .right {
+            transform: translateX(100px);
+        }
+
+        .show .left {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .show .right {
+            opacity: 1;
+            transform: translateX(0);
+        }
+  /* Container Sections */
+        .section {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+
+        .section.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+  
+  </style>
+    
+  
+  
+</head>
+<body>
+
+  <!-- Button to open the drawer -->
+  <div id="menu">  
+    <div id="header">
+      <img src="logo.png" alt="logo" id="logo">
+      <h1>Morfor</h1>
+      <button id="login"> <a href="login.html" id="a">Login</a></button>
+  <span class="open-btn" onclick="toggleDrawer()"><b>&#9776;</b></span>
+    </div>
+    
+    <div class="section"><br><br>
+    <p class="right">Welcome to my <b>Portfolio Site
+    <div class="text-container">
+    <span class="animated-text">Welcome to My Site!</span>
+  </div>
+      
+      
+    </b> Transforming concepts onto reality with my technical skills.
+    </p>
+      
+      
+      <div id="status-container" class="left">
+        <div class="status" onclick="openFullscreen(0)">
+            <img src="image1.jpg" alt="Status 1">
+        </div>
+        <div class="status" onclick="openFullscreen(1)">
+            <img src="image2.jpg" alt="Status 2">
+        </div>
+        
+        <div class="status" onclick="openFullscreen(2)">
+            <img src="image3.jpg" alt="Status 3">
+        </div>
+        
+        <div class="status" onclick="openFullscreen(3)">
+            <img src="image4.jpg" alt="Status 4">
+        </div>
+        
+        <div class="status" onclick="openFullscreen(4)">
+            <img src="image5.jpg" alt="Status 5">
+        </div>
+        
+        <div class="status" onclick="openFullscreen(5)">
+            <img src="image6.jpg" alt="Status 6">
+        </div>
+        
+                <div class="status" onclick="openFullscreen(6)">
+            <img src="image7.jpg" alt="Status 7">
+        </div>
+        
+        <div class="status" onclick="openFullscreen(7)">
+            <img src="image8.jpg" alt="Status 8">
+        </div>
+        
+        <div class="status" onclick="openFullscreen(8)">
+            <img src="image9.jpg" alt="Status 9">
+        </div>
+        
+        <div class="status" onclick="openFullscreen(9)">
+            <img src="image10.jpg" alt="Status 10">
+        </div>
+        
+        <div class="status" onclick="openFullscreen(10)">
+            <img src="image11.jpg" alt="Status 11">
+        </div>
+        
+         <div class="status" onclick="openFullscreen(11)">
+            <img src="image12.jpg" alt="Status 12">
+        </div>
+        
+    </div>
+
+    <!-- Fullscreen Viewer -->
+    <div id="fullscreen-view" class="fullscreen hidden">
+        <div id="fullscreen-content" class="content">
+            <div id="progress-bar"></div>
+            
+            <p id="caption">This is a status caption</p>
+            <div id="media-container">
+                <img id="fullscreen-image" src="" alt="Fullscreen View">
+                <video id="fullscreen-video" controls></video>
+            </div>
+        </div>
+        <button id="prev" onclick="changeImage(-1)">&#10094;</button>
+        <button id="next" onclick="changeImage(1)">&#10095;</button>
+        <button id="download" onclick="downloadMedia()">&#x1F4E5;</button>
+        <span id="close" onclick="closeFullscreen()">&#10006;</span>
+    </div>
+      
+      
+      
+      
+      
+      
+    <div id="welcome" class="section">
+      <h2 class="left">My Services</h2>
+      <ul type="circle">
+        <li class="right"><strong>Web Development:</strong> Custom websites, web apps, UI/UX improvements.</li>
+        <li class="left"><strong>JavaScript Development:</strong> Interactive web experiences, JavaScript-heavy applications.</li>
+        <li class="right"><strong>SEO Optimization:</strong> Website performance and ranking improvement.</li>
+        <li class="left"><strong>Logo & Branding Design:</strong> Professional logos, brand identity.</li>
+        <li class="right"><strong>Teaching & Mentorship:</strong> Courses, tutorials, personalized coaching.</li>
+    </ul>
+    </div>
+      <br><br><br><br>
+      
+ 
+Let’s build something amazing together!
+      <br><br>
+          <button id="highlight" class="right" onclick="window.location.href='https://wa.me/+237671817580'">Hire Me!</button>
+  </div>
+    
+    <section class="tech-slider">
+    <h2>Technologies I Work With</h2>
+    <div class="slider-container">
+        <div class="slider">
+            <!-- Icons duplicated for seamless loop -->
+            <img src="html.png" alt="HTML5">
+            <img src="css.png" alt="CSS3">
+            <img src="js.png" alt="JavaScript">
+            <img src="bootstrap.png" alt="Bootstrap">
+            <img src="react-js.jpg" alt="React.js">
+            <img src="nodejs.png" alt="Node.js">
+            <img src="php.png" alt="PHP">
+            <img src="angularjs.png" alt="Angular">
+            <img src="db.png" alt="MySql">
+            
+            <!-- Duplicate set for continuous scrolling -->
+           <img src="html.png" alt="HTML5">
+            <img src="css.png" alt="CSS3">
+            <img src="js.png" alt="JavaScript">
+            <img src="bootstrap.png" alt="Bootstrap">
+            <img src="react-js.jpg" alt="React.js">
+            <img src="nodejs.png" alt="Node.js">
+            <img src="php.png" alt="PHP">
+            <img src="angularjs.png" alt="Angular">
+            <img src="db.png" alt="MySql">
+            
+               </div>
+    </div>
+      </section>
+       
+    
+   <div id="why-choose-me" class="section">
+      <h2 class="left">Why Choose Me?</h2>
+      <ul type="circle">
+        <li class="right"><strong>Fast and Reliable:</strong> As a web developer , i provide fast and efficient delivery to my clients. </li>
+        <li class="left"><strong>Cheap and Affodable:</strong> Providing affodable solutions without compromising on quality.Biulds personal usage apps almost free. </li>
+        <li class="right"><strong>Renders multiple Services</strong>While biulding you website or app, i do the SEO ,Logo design and graphic designing for free .</li>
+        
+       
+        <li class="left"><strong>Quick support response:</strong>Offering prompt support and maintenace services ,Ensures your,Ensures your deliverables remains seamless and stress free .</li>
+      
+            
+        <li class="right"><strong>App packaging :</strong>I provide free app packing for every websites i develope making it accessible offline in the App.</li>
+        <li class="left"><strong>Onsite and Online Services:</strong>Your location does not matters as your services can be provided to you at your door step if required  .</li>
+         
+      </ul>
+    </div>
+    
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    
+     
+    <div class="dashboard">
+        <!-- First Row -->
+        <div class="row">
+            <div class="card" id="firstCard" onclick="toggleCard(this)">
+                <div class="card-inner">
+                    <div class="card-front">Your SEO professional</div>
+                    <div class="card-back"> Providing 90% ranking and search engine optimization services </div>
+                </div>
+                <div class="click-text" id="clickText">Click to Rotate</div>
+            </div>
+
+            <div class="card" onclick="toggleCard(this)">
+                <div class="card-inner">
+                    <div class="card-front">Your App Developer</div>
+                    <div class="card-back">programming fast ,efficient and scalable apps with Professipnal UI/UX</div>
+                </div>
+            </div>
+
+          
+            </div>
+        </div>
+
+        <!-- Second Row -->
+        <div class="row">
+            <div class="card" onclick="toggleCard(this)">
+                <div class="card-inner">
+                    <div class="card-front">Website Developer</div>
+                    <div class="card-back">Developing Mobile responsive websites and PWAs with a lot of media queries </div>
+                </div>
+            </div>
+
+            <div class="card" onclick="toggleCard(this)">
+                <div class="card-inner">
+                    <div class="card-front">Graphic and Logo Designer</div>
+                    <div class="card-back">Designing officisl logos for branding and  graphics </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    
+   <br><br>
+  
+    <h3>Lets connect </h3>
+    <div id="connect" class="section">
+      <nav class="right"><a href="https://www.facebook.com/morfor.didacus.3"><img id="icons" src="facebook.png"></a> </nav>
+      <nav class="right"><a href="https://wa.me/+237671817580"><img id="icons" src="whatsApp.png"></a></nav>
+      <nav class="left"><a href="https://www.tiktok.com/@237boy.d?_r=1&_d=eh71d0k7l28d6g&sec_uid=MS4wLjABAAAAwzG9L2amaWV9RZuhS1viTDfYAxdOmrB8hVVrMsRtNAQNmpUstr01e8vLdSCvEBl8&share_author_id=7159059504444605445&sharer_language=en&source=h5_m&u_code=e4feb02hbe23aa&timestamp=1741982198&user_id=7159059504444605445&sec_user_id=MS4wLjABAAAAwzG9L2amaWV9RZuhS1viTDfYAxdOmrB8hVVrMsRtNAQNmpUstr01e8vLdSCvEBl8&utm_source=copy&utm_campaign=client_share&utm_medium=android&share_iid=7447072844804015877&share_link_id=1008c936-f27e-4de7-96ae-86b829964719&share_app_id=1233&ugbiz_name=ACCOUNT&ug_btm=b8727%2Cb0229&social_share_type=5&enable_checksum=1"><img id="icons" src="tiktok.png"></a></nav>
+      <nav class="left"><img id="icons" src="YouTube.png"></nav>
+      <nav class="left"><img id="icons" src="Twitter.png"></nav>
+      
+    </div>
+    <footer class="section">
+      <br><br>
+      <div id="footer-elements" class="right" >
+        &copy;</span>Copyright Reserve 2025 <b>|</b><br>Terms and Condition <b>| </b>Privacy Policy <br><br> Powered by <a href="dreamtech.html" id="link">DreamTech</a>
+         
+      </div>
+    </footer>
+    
+
+  <!-- The drawer containing the clickable text links -->
+  <div class="drawer">
+    
+    <!-- Dark Mode Toggle -->
+        <input type="checkbox" id="checkbox2" class="custom-checkbox">
+        <label for="checkbox2" class="custom-checkbox-label">Enable Dark Mode</label>
+   
+    <span class="close-btn" onclick="toggleDrawer()">×</span><hr>
+    
+    <a href="about.html"> 
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="blue" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="12" cy="12" r="10" stroke="#00b4d8" stroke-width="2" fill="none"/>
+  <line x1="12" y1="8" x2="12" y2="8" stroke="#00b4d8" stroke-width="2" stroke-linecap="round"/>
+  <line x1="12" y1="11" x2="12" y2="16" stroke="#00b4d8" stroke-width="2" stroke-linecap="round"/>
+</svg>
+      
+    About Me</a><hr>
+    
+    <a href="contactMe.html">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="green" xmlns="http://www.w3.org/2000/svg">
+  <path d="M3 8l9 6 9-6v10H3V8z" stroke="green" stroke-width="2" fill="none"/>
+  <path d="M21 6l-9 6-9-6 9-4 9 4z" stroke="green" stroke-width="2" fill="none"/>
+</svg>
+      Contact</a><hr>
+    
+    <a href="javascript:void(0)" onclick="showPage(3)">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="orange" xmlns="http://www.w3.org/2000/svg">
+  <rect x="3" y="12" width="4" height="8" stroke="orange" stroke-width="2" fill="none"/>
+  <rect x="10" y="8" width="4" height="12" stroke="orange" stroke-width="2" fill="none"/>
+  <rect x="17" y="4" width="4" height="16" stroke="orange" stroke-width="2" fill="none"/>
+</svg>
+      Insights</a><hr>
+    
+    <a href="javascript:void(0)" onclick="showPage(4)">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="purple" xmlns="http://www.w3.org/2000/svg">
+  <path d="M4 18L10 12L14 16L20 10" stroke="purple" stroke-width="2" fill="none"/>
+  <circle cx="4" cy="18" r="2" fill="purple"/>
+  <circle cx="10" cy="12" r="2" fill="purple"/>
+  <circle cx="14" cy="16" r="2" fill="purple"/>
+  <circle cx="20" cy="10" r="2" fill="purple"/>
+</svg>
+      Admin Panel</a><hr>
+    
+    <a href="javascript:void(0)" onclick="showPage(4)">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="red" xmlns="http://www.w3.org/2000/svg">
+  <path d="M12 4v10m0 0l-4-4m4 4l4-4" stroke="red" stroke-width="2" stroke-linecap="round"/>
+  <rect x="4" y="18" width="16" height="2" fill="red"/>
+</svg>
+      Downloads</a><hr>
+    
+        <a href="lessons.html">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="blue" xmlns="http://www.w3.org/2000/svg">
+  <path d="M3 5h6a2 2 0 0 1 2 2v10H3V5z" stroke="blue" stroke-width="2" fill="none"/>
+  <path d="M21 5h-6a2 2 0 0 0-2 2v10h8V5z" stroke="blue" stroke-width="2" fill="none"/>
+</svg>
+          Lessions</a><hr>
+    
+        <button class="open-modal-btn" id="open-modal-btn"><b>
+       <img src="app.png" width="30px" height="30px">
+
+        Get App</b></button><hr>
+    
+    
+        <a href="javascript:void(0)" onclick="showPage(4)">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="purple" xmlns="http://www.w3.org/2000/svg">
+  <path d="M4 4h16v12H6l-4 4V4z" stroke="purple" stroke-width="2" fill="none"/>
+  <line x1="8" y1="10" x2="16" y2="10" stroke="purple" stroke-width="2" stroke-linecap="round"/>
+  <line x1="8" y1="14" x2="12" y2="14" stroke="purple" stroke-width="2" stroke-linecap="round"/>
+</svg>
+          Chats</a><hr>
+
+    
+    <a href="javascript:void(0)" onclick="showPage(4)">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="orange" xmlns="http://www.w3.org/2000/svg">
+  <path d="M4 4h16v12H6l-4 4V4z" stroke="pink" stroke-width="2" fill="none"/>
+  <path d="M12 6l1.5 3h3l-2.5 2 1 3-2.5-1.5L9 14l1-3L7.5 9h3z" stroke="pink" stroke-width="2" fill="none"/>
+</svg>
+      Feedback</a><hr>
+
+    
+    <a href="javascript:void(0)" onclick="showPage(4)">
+      Downloads</a><hr>
+
+    
+    <!-- The Modal (Pop-up) -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" id="close-modal-btn">&times;</span>
+
+            <!-- App Info -->
+            <header><strong>APP DETAILS</strong></header>
+            <p><b>Version:</b> 1.0.0</p>
+            <p><b>Size:</b> ~5 MB</p>
+            <p><b>Last Updated:</b> <b style="color:green">March 2025</b></p>
+
+            <!-- Download Button -->
+            <button id="download-btn">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="40" fill="green">
+  <path d="M16.56 3.12l1.19-2.07a.5.5 0 0 0-.87-.5l-1.2 2.08a6.94 6.94 0 0 0-8.3 0l-1.2-2.08a.5.5 0 1 0-.87.5l1.19 2.07a7 7 0 0 0-3.9 6.13V16a3 3 0 0 0 3 3h.5a2.5 2.5 0 0 0 5 0h2a2.5 2.5 0 0 0 5 0h.5a3 3 0 0 0 3-3V9.25a7 7 0 0 0-3.9-6.13zM7.75 7.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5zm8.5 0a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5z"/>
+</svg><b>Download App</b></button>
+
+            <!-- Progress Bar -->
+            <div id="progress-container" class="hidden">
+                <p>Downloading: <span id="progress-text">0%</span> <span id="progress-time"></span></p>
+                <div class="progress-bar">
+                    <div id="progress-fill"></div>
+                </div>
+            </div>
+
+            <!-- Cancel Button -->
+            <button id="cancel-download" class="hidden">Cancel</button>
+        </div>
+    </div>
+    
+  </div>
+    
+
+  
+
+  <script>
+    // Function to toggle the drawer open and closed
+    function toggleDrawer() {
+      document.body.classList.toggle('drawer-open');
+    }
+
+    // Function to show the corresponding page based on the clicked link
+    function showPage(pageNumber) {
+      // Hide all pages first
+      let pages = document.querySelectorAll('.page');
+      pages.forEach(page => {
+        page.style.display = 'none';
+      });
+
+      // Show the selected page
+      document.getElementById('page' + pageNumber).style.display = 'block';
+    }
+  
+// Get the checkbox and body element
+const darkModeToggle = document.getElementById('checkbox2');
+const body = document.body;
+
+// Check localStorage for dark mode preference and apply it
+if (localStorage.getItem('darkMode') === 'enabled') {
+    body.classList.add('dark-mode');
+    darkModeToggle.checked = true; // Set the checkbox as checked
+}
+
+// Event listener to toggle dark mode
+darkModeToggle.addEventListener('change', function () {
+    if (darkModeToggle.checked) {
+        body.classList.add('dark-mode');
+        localStorage.setItem('darkMode', 'enabled'); // Save preference
+    } else {
+        body.classList.remove('dark-mode');
+        localStorage.setItem('darkMode', 'disabled'); // Save preference
+    }
+});
+
+// Apply dark mode preference from localStorage when the page is loaded
+window.addEventListener('load', function () {
+    if (localStorage.getItem('darkMode') === 'enabled') {
+        body.classList.add('dark-mode');
+    }
+});
+    
+    
+    document.addEventListener("DOMContentLoaded", () => {
+  const textElement = document.querySelector(".animated-text");
+  const messages = [
+    "Welcome to My Site!",
+    "Explore My Features",
+    "Learn More About Us",
+    "Contact for Web Services",
+    "Enjoy Your Visit!"
+  ];
+
+  let currentMessageIndex = 0;
+
+  function changeText() {
+    textElement.classList.remove("animated-text");
+    
+    setTimeout(() => {
+      textElement.textContent = messages[currentMessageIndex];
+      textElement.classList.add("animated-text");
+      
+      currentMessageIndex = (currentMessageIndex + 1) % messages.length;
+    }, 500); // Delay to remove animation before changing text
+  }
+
+  // Initial text change
+  changeText();
+
+  // Change text every 6 seconds (same as animation duration)
+  setInterval(changeText, 5000);
+});
+    
+    
+    document.addEventListener("DOMContentLoaded", () => {
+            const sections = document.querySelectorAll(".section");
+
+            // Intersection Observer to trigger animations
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("show");
+                    } else {
+                        entry.target.classList.remove("show");
+                    }
+                });
+            }, { threshold: 0.5}); 
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    
+    const mediaFiles = [
+    { type: "image", src: "image1.jpg",caption: "My graphic  design skills .Get your perfect design from Morfor Didacus a qualified and certified graphic designer" },
+    { type: "image", src: "image2.jpg",caption: "The images you use matters a lot , Get your design at 50% discount . lets go" },
+    { type: "image", src: "image3.jpg",caption: "Qiality and professional design just for you" },
+    { type: "image", src: "image4.jpg",caption: "Morfor Didacus" },
+    { type: "image", src: "image5.jpg",caption: "Perfect app scaling and responsiveness" },
+    { type: "image", src: "image6.jpg",caption: "Your perfect solution is here" },
+    { type: "image", src: "image7.jpg",caption: "My graphic  design skills .Get your perfect design from Morfor Didacus a qualified and certified graphic designer" },
+    { type: "image", src: "image8.jpg",caption: "The images you use matters a lot , Get your design at 50% discount . lets go" },
+    { type: "image", src: "image9.jpg",caption: "Qiality and professional design just for you" },
+    { type: "image", src: "image10.jpg",caption: "Morfor Didacus" },
+    { type: "image", src: "image11.jpg",caption: "Perfect app scaling and responsiveness" },
+    { type: "image", src: "image12.jpg",caption: "Your perfect solution is here" }
+  ];
+
+let currentIndex = 0;
+let autoPlayTimeout;
+
+function openFullscreen(index) {
+    currentIndex = index;
+    updateMedia();
+    document.getElementById("fullscreen-view").classList.remove("hidden");
+    autoPlay();
+}
+
+function closeFullscreen() {
+    document.getElementById("fullscreen-view").classList.add("hidden");
+    clearTimeout(autoPlayTimeout);
+}
+
+function changeImage(direction) {
+    currentIndex = (currentIndex + direction + mediaFiles.length) % mediaFiles.length;
+    let mediaElement = document.getElementById("fullscreen-image");
+    mediaElement.style.transform = "rotateY(90deg)";
+    setTimeout(() => {
+        updateMedia();
+        mediaElement.style.transform = "rotateY(0deg)";
+    }, 300);
+}
+
+function updateMedia() {
+    clearTimeout(autoPlayTimeout);
+    const media = mediaFiles[currentIndex];
+   
+    document.getElementById("caption").textContent = media.caption;
+
+    if (media.type === "image") {
+        document.getElementById("fullscreen-image").src = media.src;
+        document.getElementById("fullscreen-image").style.display = "block";
+        document.getElementById("fullscreen-video").style.display = "none";
+    } else {
+        document.getElementById("fullscreen-video").src = media.src;
+        document.getElementById("fullscreen-video").style.display = "block";
+        document.getElementById("fullscreen-image").style.display = "none";
+    }
+
+    document.getElementById("progress-bar").style.width = "0%";
+    setTimeout(() => document.getElementById("progress-bar").style.width = "100%", 10);
+    autoPlay();
+}
+
+function autoPlay() {
+    autoPlayTimeout = setTimeout(() => changeImage(1), 5000);
+}
+
+function downloadMedia() {
+    const media = mediaFiles[currentIndex];
+    const link = document.createElement("a");
+    link.href = media.src;
+    link.download = media.src.split("/").pop();
+    link.click();
+}
+
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeFullscreen();
+    else if (e.key === "ArrowLeft") changeImage(-1);
+    else if (e.key === "ArrowRight") changeImage(1);
+});
+  
+  
+  
+          // Function to toggle card rotation
+        function toggleCard(card) {
+            const cardInner = card.querySelector('.card-inner');
+            const clickText = document.getElementById('clickText');
+
+            // Rotate the card on click
+            cardInner.style.transform = cardInner.style.transform === 'rotateY(180deg)' ? 'rotateY(0)' : 'rotateY(180deg)';
+
+            // Fade out the "Click to Rotate" text when first card is clicked
+            if (clickText) {
+                clickText.classList.add('fade-out');
+            }
+        }
+
+        // Automatically rotate the first card every 2 seconds
+        let rotateDirection = 0;
+
+        setInterval(() => {
+            const firstCard = document.getElementById("firstCard");
+            const firstCardInner = firstCard.querySelector('.card-inner');
+            const clickText = document.getElementById('clickText');
+
+            // Rotate the card back and forth
+            if (rotateDirection === 0) {
+                firstCardInner.style.transform = 'rotateY(180deg)';
+                rotateDirection = 1;
+            } else {
+                firstCardInner.style.transform = 'rotateY(0)';
+                rotateDirection = 0;
+            }
+
+            // Fade out the "Click to Rotate" text
+            if (clickText) {
+                clickText.classList.add('fade-out');
+            }
+        }, 2000);
+  
+  // Open the modal
+        document.getElementById("open-modal-btn").addEventListener("click", function () {
+            document.getElementById("myModal").style.display = "block";
+        });
+
+        // Close the modal
+        document.getElementById("close-modal-btn").addEventListener("click", function () {
+            document.getElementById("myModal").style.display = "none";
+        });
+
+        // Close the modal if the user clicks outside of it
+        window.onclick = function (event) {
+            if (event.target === document.getElementById("myModal")) {
+                document.getElementById("myModal").style.display = "none";
+            }
+        };
+
+        let xhrDownload;
+
+        // Handle download button click
+        document.getElementById("download-btn").addEventListener("click", function () {
+            const fileUrl = "https://morfolio.ct.ws/morfolio.apk"; // Your app's correct URL
+
+            // Show progress bar
+            document.getElementById("progress-container").classList.remove("hidden");
+            document.getElementById("cancel-download").classList.remove("hidden");
+
+            downloadFileWithProgress(fileUrl);
+        });
+
+        // Handle cancel button click
+        document.getElementById("cancel-download").addEventListener("click", function () {
+            if (xhrDownload) {
+                xhrDownload.abort();
+                document.getElementById("progress-container").classList.add("hidden");
+                document.getElementById("cancel-download").classList.add("hidden");
+                alert("Download canceled.");
+            }
+        });
+
+        // Download with progress tracking
+        function downloadFileWithProgress(url) {
+            xhrDownload = new XMLHttpRequest();
+            xhrDownload.open("GET", url, true);
+            xhrDownload.responseType = "blob";
+
+            let startTime = new Date().getTime();
+
+            xhrDownload.onprogress = function (event) {
+                if (event.lengthComputable) {
+                    let percent = Math.round((event.loaded / event.total) * 100);
+                    document.getElementById("progress-text").innerText = percent + "%";
+                    document.getElementById("progress-fill").style.width = percent + "%";
+
+                    // Calculate estimated time remaining
+                    let elapsedTime = (new Date().getTime() - startTime) / 1000; // in seconds
+                    let speed = event.loaded / elapsedTime; // bytes per second
+                    let timeRemaining = (event.total - event.loaded) / speed; // in seconds
+
+                    let timeText = timeRemaining > 0 ? ` (${Math.round(timeRemaining)}s left)` : "";
+                    document.getElementById("progress-time").innerText = timeText;
+                }
+            };
+
+            xhrDownload.onload = function () {
+                if (xhrDownload.status === 200) {
+                    let blob = new Blob([xhrDownload.response], { type: "application/vnd.android.package-archive" });
+                    let link = document.createElement("a");
+                    link.href = window.URL.createObjectURL(blob);
+                    link.download = "morfolio.apk"; // Change filename if needed
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+
+                    document.getElementById("progress-container").classList.add("hidden");
+                    document.getElementById("cancel-download").classList.add("hidden");
+                }
+            };
+
+            xhrDownload.onerror = function () {
+                alert("Download failed. Please try again.");
+                document.getElementById("progress-container").classList.add("hidden");
+                document.getElementById("cancel-download").classList.add("hidden");
+            };
+
+            xhrDownload.send();
+        }
+  // Get the drawer and close button elements
+const drawer = document.querySelector('.drawer');
+const closeBtn = document.querySelector('.close-btn');
+
+// Function to open the drawer
+function openDrawer() {
+  drawer.style.left = '0'; // Slide the drawer in
+  document.body.classList.add('no-scroll'); // Disable main page scrolling
+}
+
+// Function to close the drawer
+function closeDrawer() {
+  drawer.style.left = '-250px'; // Slide the drawer out
+  document.body.classList.remove('no-scroll'); // Enable main page scrolling
+}
+
+// Add event listeners to open and close the drawer
+closeBtn.addEventListener('click', closeDrawer);
+
+// Assuming you have a button to open the drawer, you can add an event listener to it:
+const openBtn = document.querySelector('.open-btn'); // Add your open button selector
+if (openBtn) {
+  openBtn.addEventListener('click', openDrawer);
+}
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login System</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color:#000;
+            background-color: #fff;
+        }
+        .login-container {
+            display: none;
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 350px;
+        }
+    
+    .container {
+            display: none;
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 350px;
+        }
+    
+    
+    
+    
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+           
+      
+        }
+    input:hover{
+        border:2px groove #00b4d8;
+    }
+        button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #007bff;
+            border: none;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+             }
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        .logout-popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        .loading {
+            display: none;
+            font-size: 30px;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes dots {
+            0% { content: "."; }
+            33% { content: ".."; }
+            66% { content: "..."; }
+        }
+        .loading::after {
+            content: ".";
+            animation: dots 1s infinite steps(1);
+        }
+    /* CSS for Loading Spinner */
+#loadingSpinner {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+
+.spinner {
+    border: 8px solid #f3f3f3; /* Light gray background */
+    border-top: 4px solid #00b4d8; /* Blue color */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+    /* Hide the default checkbox */
+.custom-checkbox {
+    display: none;
+}
+
+    #login{
+        background:linear-gradient(45deg,#00b4d8,#000);
+        font-size:20px;
+    }
+        #sign-up{
+        background:linear-gradient(45deg,#00b4d8,aqua);
+            color:#000;
+            font-weight:bold;
+            font-size:20px;
+    }
+    a{
+     color:#00b4d8;
+        text-decoration:none;
+        font-weight:italic;
+        font-weight:bold;
+    }
+    #logo{
+       width:100px;
+        height:100px;
+    }
+    
+    
+    
+    
+
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+            background-color: #fff; /* Light mode default */
+            color: #333; /* Light mode default */
+        }
+
+        
+        
+    
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    </style>
+</head>
+<body>
+
+    <div class="login-container" id="loginForm">
+          <img src="logo1.png" alt="logo" id="logo">
+        <h2>Login</h2>
+        <input type="text" id="username" placeholder="Username">
+        <input type="password" id="password" placeholder="Password">
+        <label>
+    <input type="checkbox" id="rememberMe" required> Remember Me
+</label>
+        <button id="login" onclick="validateLogin()">Login</button>
+        <!-- Loading Spinner (Initially Hidden) -->
+<div id="loadingSpinner" style="display: none;">
+    <div class="spinner"></div>
+</div>
+        <div class="loading" id="loading">Logging in</div>
+        <p>Don't have an account? <a href="#" onclick="toggleForm('registerForm')">Sign Up</a></p>
+    </div>
+
+    <div class="container" id="registerForm">
+        <h2>Create an Account</h2>
+        <input type="text" id="regUsername" placeholder="Username">
+        <input type="email" id="regEmail" placeholder="Email">
+        <input type="password" id="regPassword" placeholder="Password">
+        <button id="sign-up" onclick="register()">Sign Up</button>
+        <p>Already have an account? <a href="#"  onclick="toggleForm('loginForm')">Login</a></p>
+    </div>
+
+    <div class="container" id="mainPage">
+        <nav>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="chart.html">Chart Section</a></li>
+    </ul>
+</nav>
+        
+        
+        <h2>Welcome, <span id="displayUsername"></span></h2>
+        <p>Email: <span id="displayEmail"></span></p>
+        <button onclick="confirmLogout()">Logout</button>
+    </div>
+
+    <div class="popup" id="popupMessage"></div>
+
+    <div class="logout-popup" id="logoutPopup">
+        <p>Are you sure you want to log out?</p>
+        <button onclick="logout()">Yes</button>
+        <button onclick="closeLogoutPopup()">No</button>
+    </div>
+
+    <script>
+    // Limit Username Input to 15 Characters
+    document.getElementById("regUsername").addEventListener("input", function () {
+        this.value = this.value.substring(0, 15);
+    });
+
+    // Limit Password Input to 20 Characters
+    document.getElementById("regPassword").addEventListener("input", function () {
+        if (this.value.length > 20) {
+            this.value = this.value.substring(0, 20);
+        }
+    });
+
+    // Function to Show Popup Messages
+    function showPopup(message) {
+        const popup = document.getElementById("popupMessage");
+        popup.textContent = message;
+        popup.style.display = "block";
+        setTimeout(() => { popup.style.display = "none"; }, 2000);
+    }
+
+    // Show the loading spinner
+    function showLoading() {
+        document.getElementById("loadingSpinner").style.display = "block";
+    }
+
+    // Hide the loading spinner
+    function hideLoading() {
+        document.getElementById("loadingSpinner").style.display = "none";
+    }
+
+    // Function to Toggle Forms
+    function toggleForm(formId) {
+        document.getElementById("loginForm").style.display = "none";
+        document.getElementById("registerForm").style.display = "none";
+        document.getElementById("mainPage").style.display = "none";
+        document.getElementById(formId).style.display = "block";
+        clearInputs();
+    }
+
+    // Clear All Input Fields
+    function clearInputs() {
+        document.querySelectorAll("input").forEach(input => input.value = "");
+    }
+
+    // User Registration
+    function register() {
+        const username = document.getElementById("regUsername").value.trim();
+        const email = document.getElementById("regEmail").value.trim();
+        const password = document.getElementById("regPassword").value.trim();
+
+        if (!username || !email || !password) {
+            showPopup("All fields are required!");
+            return;
+        }
+
+        if (username.length < 3 || username.length > 15) {
+            showPopup("Username must be 3-15 characters!");
+            return;
+        }
+
+     const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]?)[A-Za-z\d@$!%*?&]{8,20}$/;
+        if (!passwordRegex.test(password)) {
+            showPopup("Password must be 8-20 chars, 1 uppercase, 1 number, 1 special char!");
+            return;
+        }
+
+        let formData = JSON.stringify({ username, email, password });
+
+        // Show loading spinner before sending request
+        showLoading();
+
+        fetch("register.php", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            hideLoading();  // Hide the loading spinner after response
+            showPopup(data.message);
+            if (data.success) toggleForm("loginForm");
+        })
+        .catch(() => {
+            hideLoading();  // Hide spinner if there's an error
+            showPopup("Registration failed!");
+        });
+    }
+
+    // User Login
+    function validateLogin() {
+        const username = document.getElementById("username").value.trim();
+        const password = document.getElementById("password").value.trim();
+
+        if (!username || !password) {
+            showPopup("All fields are required!");
+            return;
+        }
+
+        // Show loading spinner before sending request
+        showLoading();
+
+        fetch("login.php", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ username: username, password: password }) // Send plain text (hashed password should be handled server-side)
+        })
+        .then(response => response.json())
+        .then(data => {
+            hideLoading();  // Hide the loading spinner after response
+            console.log("Login Response:", data);  // Add log here to check what server responds with
+            if (data.success) {
+                localStorage.setItem("isLoggedIn", "true");
+                localStorage.setItem("username", data.user.username);
+                localStorage.setItem("email", data.user.email);
+
+                showPopup("Login successful!");
+                showMainPage();
+            } else {
+                showPopup(data.message);
+            }
+        })
+        .catch(() => {
+            hideLoading();  // Hide spinner if there's an error
+            showPopup("Server error. Please try again later.");
+        });
+    }
+const rememberMe = document.getElementById("rememberMe").checked;
+if (rememberMe) {
+    localStorage.setItem("savedUsername", username);
+    localStorage.setItem("savedPassword", password);
+} else {
+    localStorage.removeItem("savedUsername");
+    localStorage.removeItem("savedPassword");
+}
+    
+    // Show Main Page
+    function showMainPage() {
+        const username = localStorage.getItem("username");
+        const email = localStorage.getItem("email");
+
+        if (!username || !email) {
+            showPopup("Error loading profile!");
+            toggleForm("loginForm");
+            return;
+        }
+
+        document.getElementById("displayUsername").textContent = username;
+        document.getElementById("displayEmail").textContent = email;
+        toggleForm("mainPage");
+    }
+
+    // Confirm Logout
+    function confirmLogout() {
+        document.getElementById("logoutPopup").style.display = "block";
+    }
+
+    // Close Logout Popup
+    function closeLogoutPopup() {
+        document.getElementById("logoutPopup").style.display = "none";
+    }
+
+    // User Logout
+    function logout() {
+        localStorage.removeItem("isLoggedIn");
+        localStorage.removeItem("username");
+        localStorage.removeItem("email");
+        toggleForm("loginForm");
+        closeLogoutPopup();
+    }
+
+    // Auto-Login if User is Logged In
+    
+    window.onload = () => {
+    if (localStorage.getItem("isLoggedIn")) {
+        showMainPage();
+    } else {
+        document.getElementById("username").value = localStorage.getItem("savedUsername") || "";
+        document.getElementById("password").value = localStorage.getItem("savedPassword") || "";
+        toggleForm("loginForm");
+    }
+};
+    
+    // Get the body element
+        const body = document.body;
+
+        // Apply dark mode preference from localStorage
+        window.addEventListener('load', function () {
+            if (localStorage.getItem('darkMode') === 'enabled') {
+                body.classList.add('dark-mode');
+            }
+        });
+</script>
+    
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        .rating {
+            font-size: 24px;
+        }
+
+        .rating span {
+            cursor: pointer;
+        }
+
+        .feedback-types {
+            margin-top: 20px;
+        }
+
+        .feedback-types input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        .submit-btn {
+            background-color: #00b4d8;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ddd;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Feedback</h1>
+    <div class="rating">
+        <span>&#9733;</span>
+        <span>&#9733;</span>
+        <span>&#9733;</span>
+        <span>&#9733;</span>
+        <span>&#9733;</span>
+    </div>
+    <div class="feedback-types">
+        <input type="checkbox" id="easy-to-use">Easy to use
+        <br>
+        <input type="checkbox" id="good-design">Good design
+        <br>
+        <input type="checkbox" id="fast-support">Fast support
+        <br>
+        <input type="checkbox" id="other">Other
+    </div>
+    <button class="submit-btn">Submit Feedback</button>
+    <div class="popup">
+        <h2>Thank you for your feedback!</h2>
+        <button class="submit-btn" id="close-popup">Close</button>
+    </div>
+    <script>
+        const ratingStars = document.querySelectorAll('.rating span');
+        const feedbackTypes = document.querySelectorAll('.feedback-types input[type="checkbox"]');
+        const submitBtn = document.querySelector('.submit-btn');
+        const popup = document.querySelector('.popup');
+        const closePopup = document.getElementById('close-popup');
+
+        let rating = 0;
+
+        ratingStars.forEach((star, index) => {
+            star.addEventListener('click', () => {
+                rating = index + 1;
+                ratingStars.forEach((star, i) => {
+                    if (i < rating) {
+                        star.style.color = 'yellow';
+                    } else {
+                        star.style.color = 'black';
+                    }
+                });
+            });
+        });
+
+        submitBtn.addEventListener('click', () => {
+            const feedback = [];
+            feedbackTypes.forEach((type) => {
+                if (type.checked) {
+                    feedback.push(type.id);
+                }
+            });
+            console.log(`Rating: ${rating}, Feedback: ${feedback.join(', ')}`);
+            popup.style.display = 'block';
+        });
+
+        closePopup.addEventListener('click', () => {
+            popup.style.display = 'none';
+        });
+    </script>
+</body>
+</html>

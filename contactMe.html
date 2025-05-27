@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="theme-color" content="#1F1833">
+  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        
+        .header {
+            background:linear-gradient(to bottom, #1F1833,#7854B3);
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+        
+        .contact-section {
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .contact-section h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        .contact-section p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        
+        .contact-form {
+            width: 75%;
+            margin: 5px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-form label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        .contact-form input[type="text"], .contact-form input[type="email"], .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #7854B3;
+            border-radius:5px;
+        }
+        
+        .contact-form input[type="submit"] {
+            background:linear-gradient(to right, #1F1833,#7854B3);;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width:70%;
+        }
+        
+        .contact-form input[type="submit"]:hover {
+            background-color: #555;
+        }
+        
+        .direct-contact {
+            margin-top: 20px;
+        }
+        
+        .direct-contact a {
+            font-size: 18px;
+            margin-bottom: 10px;
+            display: block;
+        }
+      a{
+        text-decoration:none;
+        color:#7854B3;
+        font-weight:bold;
+      }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Contact Us</h1>
+    </div>
+    
+    <div class="contact-section">
+        <h2>Get in Touch</h2>
+        <p>We'd love to hear from you! Whether you have a question, comment, or just want to say hello, please don't hesitate to contact us.</p>
+        <p>We're always here to help. Our team is dedicated to providing the best possible service to our customers.</p>
+    </div>
+    
+    <div class="contact-form">
+        <form action="contact.php" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name"><br><br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email"><br><br>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message"></textarea><br><br>
+            <input type="submit" value="Send Message">
+        </form>
+    </div>
+    
+    <div class="direct-contact">
+        <h2>Direct Contact</h2>
+        <p>Want to get in touch with us directly? Here are our contact details:</p>
+        <a href="tel:+237671817580">Call us: +237 123 456 7</a>
+        <a href="mailto:morfordidacus@email.com">Email us: info@example.com</a>
+    </div>
+</body>
+</html>
